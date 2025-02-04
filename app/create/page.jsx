@@ -1,15 +1,39 @@
-import React from 'react'
+"use client";
+import React, {useState} from 'react'
 import LogoTitle from './_components/LogoTitle'
 import {Button} from '@/components/ui/button'
 import {ArrowLeft, ArrowRight} from 'lucide-react'
+import LogoDesc from './_components/LogoDesc'
+import LogoColorPallete from './_components/LogoColorPallete'
+import LogoDesigns from './_components/LogoDesigns'
+import LogoIdea from './_components/LogoIdea'
+
 function CreateLogo() {
+
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState();
+
+  const OnHandleInputChange = (field, value) => {
+
+    setFormData(prev => ({...prev, [field]: value}))
+
+    console.log(formData)
+  }
+
+
   return (
     <div className='mt-28 p-10 border rounded-xl 2xl:mx-72'>
-        <LogoTitle />
+      {step==1 ? <LogoTitle OnHandleInputChange={(v) => OnHandleInputChange('title', v)}/> :
+        step==2 ? <LogoDesc OnHandleInputChange={(v) => OnHandleInputChange('desc', v)}/>:
+        step==3 ? <LogoColorPallete OnHandleInputChange={(v) => OnHandleInputChange('palette', v)}/>:
+        step==4 ? <LogoDesigns OnHandleInputChange={(v) => OnHandleInputChange('design', v)}/>:
+        step==5 ? <LogoIdea OnHandleInputChange={(v) => OnHandleInputChange('idea', v)}/>:
 
+      null}
+        
         <div className='flex items-center justify-between mt-10'>
-          <Button variant='outline'> <ArrowLeft/> Previous</Button>
-          <Button> <ArrowRight/> Continue</Button>
+         {step !==1 && <Button variant='outline' onClick={() => setStep(step-1)}> <ArrowLeft/> Previous</Button> }
+          <Button onClick={() => setStep(step+1) }> <ArrowRight/> Continue</Button>
         </div>
     </div>
   )
