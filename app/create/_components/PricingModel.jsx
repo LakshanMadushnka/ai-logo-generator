@@ -39,7 +39,7 @@ function PricingModel({formData}) {
                     </div>
                     {user?
                         <Button className='mt-5 bg-purple-500'>{pricing.button}</Button>
-                        :<SignInButton mode='modal' forceRedirectUrl={'/generate-logo?type='+pricing.title}>
+                        :<SignInButton mode='modal' forceRedirectUrl={'/generate-logo?type= '+pricing.title}>
                             <Button className='mt-5 bg-purple-500'>{pricing.button}</Button>
                         </SignInButton>
                     }
