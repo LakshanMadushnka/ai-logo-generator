@@ -23,11 +23,13 @@ function CreateLogo() {
 
   return (
     <div className='mt-28 p-10 border rounded-xl 2xl:mx-72'>
-      {step==1 ? <LogoTitle OnHandleInputChange={(v) => OnHandleInputChange('title', v)}/> :
-        step==2 ? <LogoDesc OnHandleInputChange={(v) => OnHandleInputChange('desc', v)}/>:
-        step==3 ? <LogoColorPallete OnHandleInputChange={(v) => OnHandleInputChange('palette', v)}/>:
-        step==4 ? <LogoDesigns OnHandleInputChange={(v) => OnHandleInputChange('design', v)}/>:
-        step==5 ? <LogoIdea OnHandleInputChange={(v) => OnHandleInputChange('idea', v)}/>:
+      {step==1 ? <LogoTitle OnHandleInputChange={(v) => OnHandleInputChange('title', v)} formData={formData}/> :
+        step==2 ? <LogoDesc OnHandleInputChange={(v) => OnHandleInputChange('desc', v)} formData={formData}/>:
+        step==3 ? <LogoColorPallete OnHandleInputChange={(v) => OnHandleInputChange('palette', v)} formData={formData}/>:
+        step==4 ? <LogoDesigns OnHandleInputChange={(v) => OnHandleInputChange('design', v)} formData={formData}/>:
+        step==5 ? <LogoIdea
+        formData={formData}
+        OnHandleInputChange={(v) => OnHandleInputChange('idea', v)}/>:
 
       null}
         
