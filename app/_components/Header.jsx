@@ -1,17 +1,26 @@
+"use client";
 import React from 'react'
 import Image from 'next/image'
 import {Button} from '@/components/ui/button'
 import Link from 'next/link'
+import {UserButton, useUser} from '@clerk/nextjs'
 
 function Header() {
+  const {user}=useUser();
   return (
     
     <div className='px-10 lg:px-32 xl:px-48 2xl:px-56 p-4 flex justify-between items-center shadow-sm'>
       <Link href={"/"}>
             <Image src="/logo.svg" alt="logo" width={100} height={100} />
       </Link>
+
+            <div className='flex gap-3 items-center'>
+              {user ? <Button  className='bg-purple-500 text-white'>Dashboard</Button>:
+             <Button>Get Started</Button>}
+             <UserButton />
+            </div>
         
-        <Button>Get Started</Button>
+        
     </div>
   )
 }
